@@ -1,9 +1,19 @@
-import Arithmetic from "~/src/Arithmetic";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-console.log(
-    Arithmetic.summation(1, 3),
-    Arithmetic.subtraction(1, 3),
-    Arithmetic.multiplication(1, 3),
-    Arithmetic.division(1, 3),
-    Arithmetic.division(1, 0)
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>Hello, World!</div>
+        );
+    }
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("root")
 );
