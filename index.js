@@ -5,23 +5,20 @@ import Check from "~/src/Check";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { check: new Check };
+        this.check = new Check;
+        this.fillCheck();
     }
 
-    componentDidMount() {
-        let check = new Check;
-        check.add("Хлеб", 30);
-        check.add("Чай", 150);
-        check.add("Кофе", 520);
-        check.delete(2);
-
-        this.setState({ check });
+    fillCheck() {
+        this.check.add("Хлеб", 30);
+        this.check.add("Чай", 150);
+        this.check.add("Кофе", 520);
+        this.check.delete(2);
     }
 
     render() {
-        const { check } = this.state;
-        const products = check.products;
-        const result = check.result();
+        const products = this.check.products;
+        const result = this.check.result();
 
         return (
             <div>
