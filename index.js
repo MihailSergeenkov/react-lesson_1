@@ -5,20 +5,12 @@ import Check from "~/src/Check";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.check = new Check;
-        this.fillCheck();
-    }
-
-    fillCheck() {
-        this.check.add("Хлеб", 30);
-        this.check.add("Чай", 150);
-        this.check.add("Кофе", 520);
-        this.check.delete(2);
     }
 
     render() {
-        const products = this.check.products;
-        const result = this.check.result();
+        const { check } = this.props;
+        const products = check.products;
+        const result = check.result();
 
         return (
             <div>
@@ -27,7 +19,7 @@ class App extends Component {
                         products.map((product, index) => (
                             <li key={index}>{product.view()}</li>
                         ))
-                    }                    
+                    }
                 </ul>
                 <p>Кол-во продуктов: {result.products}</p>
                 <p>Стоимость: {result.result}</p>
@@ -36,7 +28,14 @@ class App extends Component {
     }
 }
 
+let check = new Check;
+
+check.add("Хлеб", 30);
+check.add("Чай", 150);
+check.add("Кофе", 520);
+check.delete(2);
+
 ReactDOM.render(
-    <App />,
+    <App check={check} />,
     document.getElementById("root")
 );
